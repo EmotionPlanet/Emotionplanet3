@@ -1,7 +1,7 @@
 // This is a JavaScript file
 // This is a JavaScript file
 
-const spring = [
+exports.spring = [
 "藍蒔く",
 "青木の花",
 "石蓴",

@@ -1,7 +1,7 @@
 // This is a JavaScript file
 // This is a JavaScript file
 
-const summer = [
+exports.summer = [
 "アイスコーヒー",
 "愛鳥週間",
 "青蘆",

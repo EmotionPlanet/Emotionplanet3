@@ -1,7 +1,7 @@
 // This is a JavaScript file
 
 
-const rain = [
+exports.rain = [
 "汗",
 "涙",
 "スポーツ",
@@ -11,5 +11,10 @@ const rain = [
 "運動",
 "部活",
 "試合",
-"風呂"
+"風呂",
+"プール",
+"水",
+"雨",
+"ウォーター",
+"湿"
 ];

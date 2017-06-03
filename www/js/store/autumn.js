@@ -2,7 +2,7 @@
 
 // This is a JavaScript file
 
-const autumn = [
+exports.autumn = [
 "藍の花",
 "青蜜柑",
 "赤い羽根",

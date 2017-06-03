@@ -1,2 +1,71 @@
-/**/
+/* top_config */
+/* body */
+body{
+    overflow: hidden;
+}
 
+#title {
+    background-image: url("../images/title_bg.png") !important;
+    background-size: cover !important;
+}
+
+
+
+h1 {
+    height: 13%;
+    margin-top: 10%!important;
+    margin-bottom: 30%!important;
+}
+
+h1 img {
+    height: 100%;
+}
+
+#tap {
+    height: 15%;
+    margin-top: 10%!important;
+    margin-bottom: 30%!important;
+    background: none;
+    border: 5px solid #ffffff;
+    border-radius: 10px;
+}
+
+#tap img{
+    height: 100%;
+}
+
+#view-planet {
+    width: 100%;
+    position: absolute;
+    bottom: -25%;
+}
+
+.view-layer {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.view-layer-block {
+    
+}
+#boy {
+    background: url(../images/people/boy1.png);
+    height: 32px;
+    width: 32px;
+    transform: scale(3,3);
+    position: absolute;
+    left: 50%;
+}
+#girl {
+}
+
+#background-weather {
+    background-size: cover !important;
+}
+.sunny {
+    background:url(../images/weather/sunny_bg.png)!important;
+}
+.rain {
+    background:url(../images/weather/rain_bg.png)!important;
+}

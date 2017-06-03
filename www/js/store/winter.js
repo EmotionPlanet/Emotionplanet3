@@ -1,6 +1,6 @@
 // This is a JavaScript file
 
-const winter =[
+exports.winter =[
 "アイスホッケー",
 "青木の実",
 "皸",
