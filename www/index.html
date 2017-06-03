@@ -6,32 +6,24 @@
   <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
   <script src="components/loader.js"></script>
   <script src="lib/onsenui/js/onsenui.min.js"></script>
+  <script src="js/jsoauth.js"></script>
+  
+  <script src="js/store/autumn.js"></script>
+  <script src="js/store/negative.js"></script>
+  <script src="js/store/positive.js"></script>
+  <script src="js/store/rain.js"></script>
+  <script src="js/store/spring.js"></script>
+  <script src="js/store/summer.js"></script>
+  <script src="js/store/winter.js"></script>
+
+  <script src="js/twitter_auth.js"></script>
 
   <link rel="stylesheet" href="components/loader.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
   <link rel="stylesheet" href="css/style.css">
 
-  <script>
-    // Page init event
-    document.addEventListener('init', function(event) {
-      var page = event.target;
-
-      if (page.matches('#first-page')) {
-
-        page.querySelector('#push-button').onclick = function() {
-          document.querySelector('#navigator').pushPage('page2.html');
-        };
-
-      } else if (page.matches('#second-page')) {
-
-        page.querySelector('#pop-button').onclick = function() {
-          document.querySelector('#navigator').popPage();
-        };
-
-      }
-    });
-  </script>
+  <script src="js/main.js"></script>
 </head>
 <body>
   <ons-navigator id="navigator" page="page1.html"></ons-navigator>
@@ -44,7 +36,7 @@
 
       <div class="content" style="text-align: center">
         <p>This is the first page.</p>
-        <ons-button id="push-button">Push page</ons-button>
+        <ons-button onclick="connect()">twitter認証</ons-button>
       </div>
     </ons-page>
   </ons-template>
