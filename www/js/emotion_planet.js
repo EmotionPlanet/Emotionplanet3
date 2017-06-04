@@ -39,7 +39,7 @@ function showAuthWindow(url) {
         localStorage.setItem(oauth, JSON.stringify(oauth))
         oauth.setVerifier(RegExp.$1);
         oauth.fetchAccessToken((data) => {
-            oauth.getJSON('https://api.twitter.com/1.1/statuses/user_timeline.json?count=20', 
+            oauth.getJSON('https://api.twitter.com/1.1/statuses/user_timeline.json?count=40', 
                 (data) => {
                     analysis = analysisTimeLine(data);
                     document.querySelector('#navigator').pushPage('page2.html');
@@ -123,48 +123,41 @@ function createPlanet(analysis) {
         
         let platStyle = [];
         console.log("--")
-        console.log(springPlatNum)
+        console.log("springPlatNum: "+ springPlatNum)
         for (let i = 0; i <= springPlatNum; i++) {
             platStyle.push("url(images/planet/spring_planet.png)");
         }
-        console.log(summerPlatNum)
+        console.log("summerPlatNum: "+ summerPlatNum)
         for (let i = 0; i <= summerPlatNum; i++) {
             platStyle.push("url(images/planet/summer_planet.png)");
         }        
-        console.log(autumnPlatNum)
+        console.log("autumnPlatNum: "+ autumnPlatNum)
         for (let i = 0; i <= autumnPlatNum; i++) {
             platStyle.push("url(images/planet/autumn_planet.png)");
         }       
-        console.log(winterPlatNum)
+        console.log("winterPlatNum: "+ winterPlatNum)
         for (let i = 0; i <= winterPlatNum; i++) {
             platStyle.push("url(images/planet/winter_planet.png)");
         }
-
-        console.log(coefficient)
+        console.log("--")
         
-
-        function changePlatform(a) {
-
-            shufflePlatStyle = a.sort(() => Math.random()-.5)
+        shufflePlatStyle = platStyle.sort(() => Math.random()-.5)
         
-            let cnt = 0;
+        let cnt = 0;
 
-            for (let n of circleMap) {
-                let viewLayer = document.createElement("div");
-                viewLayer.className = "view-layer";
-                
-                    for (let i = 0; i < n; i++){
-                        let element = document.createElement("div");
-                        element.className = "view-layer-block";
-                        element.style.backgroundImage = shufflePlatStyle[cnt]
-                        viewLayer.appendChild(element);
-                        cnt++;
-                    }
-                view.appendChild(viewLayer);
-            }
-            setTimeout(changePlatform, 4000, a)
+        for (let n of circleMap) {
+            let viewLayer = document.createElement("div");
+            viewLayer.className = "view-layer";
+            
+                for (let i = 0; i < n; i++){
+                    let element = document.createElement("div");
+                    element.className = "view-layer-block";
+                    element.style.backgroundImage = shufflePlatStyle[cnt]
+                    viewLayer.appendChild(element);
+                    cnt++;
+                }
+            view.appendChild(viewLayer);
         }
-        changePlatform(platStyle)
         
     } else {
         
@@ -193,10 +186,85 @@ function createPlanet(analysis) {
         x.style.width = v_height * 0.022 + "px";
     });
     
-    if(analysis.positiveNum >= analysis.negativeNum) {
+    if(analysis.positive >= analysis.negative) {
         document.getElementById("background-weather").classList.add('sunny');
     } else {
         document.getElementById("background-weather").classList.add('rain');
     }
+
+    
+    let boy  = document.getElementById("boy");
+    let girl = document.getElementById("girl");
+        
+    function movePeople(b) {
+        b ? (boy.classList.add("boy1"),boy.classList.remove("boy2")) : (boy.classList.add("boy2"),boy.classList.remove("boy1"));
+        b ? (girl.classList.add("girl1"),girl.classList.remove("girl2")) : (girl.classList.add("girl2"),girl.classList.remove("girl1"));
+
+        setTimeout(movePeople,1000,!b)
+    }
+    movePeople(false)
+    
+    let arr = [analysis.autumn, analysis.summer, analysis.winter, analysis.spring];
+    let maxIndex = arr.indexOf(Math.max.apply(null, arr));
+    let wood = document.getElementById("season_wood");
+    let wood2 = document.getElementById("season_wood2");
+    let wood3 = document.getElementById("season_wood3");    
+    let seasonName = document.getElementById("season_name");
+    
+    switch (maxIndex) {
+        case 0:
+            wood.classList.add("autumn_wood");
+            wood2.classList.add("autumn_wood");
+            wood3.classList.add("autumn_wood");
+            [wood, wood2, wood3].map(w => {
+                function loop(b) {
+                    let deg = b ? 3 : -3
+                    w.style.transform = "rotate(" + deg + "deg)";
+                    setTimeout(loop, 3000, !b);
+                }
+                loop(true);
+            })
+            console.log("autumn");
+            seasonName.innerText = "あなたの季節は秋模様"
+            break;
+        case 1:
+            wood.classList.add("summer_wood");
+            wood2.classList.add("summer_wood");
+            wood3.classList.add("summer_wood");
+            console.log("summer");
+            seasonName.innerText = "あなたの季節は夏模様"
+            break;
+        case 2:
+            wood.classList.add("winter_wood");
+            wood2.classList.add("winter_wood");
+            wood3.classList.add("winter_wood");
+            console.log("winter");
+            seasonName.innerText = "あなたの季節は冬模様"
+            break;
+        case 3:
+            wood.classList.add("spring_wood");
+            wood2.classList.add("spring_wood");
+            wood3.classList.add("spring_wood");
+            seasonName.innerText = "あなたの季節は春模様"
+            break;
+    }
+    console.log("spring : ", analysis.spring);
+    console.log("summer : ", analysis.summer);
+    console.log("autumn : ", analysis.autumn);
+    console.log("winter : ", analysis.winter);
+
+    
+    let rainyPercent = document.getElementById("rainy_percent");
+    let humidity     = document.getElementById("humidity")
+    rainyPercent.innerText = "降水確率 : " + parseInt(analysis.negative * 100)  + "%"
+    humidity.innerText     = "気温 : " + parseInt(analysis.positive * 100)  + "℃"
 }
 
+function rotationPlanet() {
+    view =  document.getElementById("view-planet");
+    function loop(deg) {
+        view.style.transform = "rotate("+deg+"deg)";
+        setTimeout(loop, 3000, deg + 3);
+    }
+    loop(0);
+}

@@ -13,7 +13,7 @@ body{
 
 h1 {
     height: 13%;
-    margin-top: 10%!important;
+    margin-top: 20%!important;
     margin-bottom: 30%!important;
 }
 
@@ -23,7 +23,7 @@ h1 img {
 
 #tap {
     height: 15%;
-    margin-top: 10%!important;
+    margin-top: 40%!important;
     margin-bottom: 30%!important;
     background: none;
     border: 5px solid #ffffff;
@@ -50,14 +50,42 @@ h1 img {
     
 }
 #boy {
-    background: url(../images/people/boy1.png);
     height: 32px;
     width: 32px;
     transform: scale(3,3);
     position: absolute;
-    left: 50%;
+    left: 65%;
+    bottom: 330px;
+}
+.boy1 {
+    background: url(../images/people/boy1.png)!important;
+
+}
+.boy2 {
+    background: url(../images/people/boy2.png)!important;
 }
 #girl {
+    height: 32px;
+    width: 32px;
+    transform: scale(3,3);
+    position: absolute;
+    left: 20%;
+    bottom: 250px;
+}
+.girl1 {
+    background: url(../images/people/girl1.png)!important;
+}
+.girl2 {
+    background: url(../images/people/girl2.png)!important;
+}
+
+#weed {
+    background: url(../images/weed/wood.png);
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    left: 30%;
+    bottom: 300px;
 }
 
 #background-weather {
@@ -68,4 +96,61 @@ h1 img {
 }
 .rain {
     background:url(../images/weather/rain_bg.png)!important;
+}
+
+#season_wood {
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    left: 60%;
+    bottom: 200px;
+    background-size: contain !important;
+}
+#season_wood2 {
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    left: 20%;
+    bottom: 150px;
+    background-size: contain !important;
+}
+#season_wood3 {
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    left: 55%;
+    bottom: 100px;
+    background-size: contain !important;
+    transform:rotate(180) ;
+}
+.spring_wood {
+    background:url(../images/weed/sakura.png) no-repeat;
+}
+.summer_wood {
+    background:url(../images/weed/wood.png) no-repeat;
+}
+.autumn_wood {
+    background:url(../images/weed/momizi.png) no-repeat;
+}
+.winter_wood {
+    background:url(../images/weed/kareki.png) no-repeat;
+}
+
+#season_name {
+    color: white;
+    font-size: 8vw;
+    padding: 0!important;
+    margin: 0!important;
+    text-align: left!important;
+}
+
+#rainy_percent{
+    color: white;
+    font-size: 6vw;
+    text-align: left!important;
+}
+#humidity {
+    color: white;
+    font-size: 6vw;
+    text-align: left!important;
 }
